@@ -1,3 +1,4 @@
+//TYPESCRIPT
 to install typescript - npm install -g typescript
 to compile - tsc app.tsc
 to run - node app.js
