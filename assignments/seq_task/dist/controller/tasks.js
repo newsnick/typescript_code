@@ -11,12 +11,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getTasksByStatus = exports.markTaskAsCompleted = exports.updateTask = exports.getTaskById = exports.getAllTasks = exports.deleteTask = exports.createTask = void 0;
-const task_model_1 = require("../models/task.model"); // Import the TaskModel
+const task_model_1 = require("../models/task.model");
 const createTask = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const { username, description, deadline, status } = req.body;
     try {
         const newTask = yield task_model_1.TaskModel.bulkCreate(req.body, {
-            fields: ['username', 'description', 'deadline', 'status'], // Explicitly specify the fields to create
+            fields: ['username', 'description', 'deadline', 'status'],
         });
         return res
             .status(200)
@@ -72,7 +72,7 @@ const markTaskAsCompleted = (req, res, next) => __awaiter(void 0, void 0, void 0
         if (!updatedTask) {
             return res.status(404).json({ message: 'Task not found' });
         }
-        updatedTask.status = true; // Mark the task as completed
+        updatedTask.status = true;
         yield updatedTask.save();
         return res
             .status(200)
